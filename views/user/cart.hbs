@@ -1,0 +1,129 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background: transparent">
+     <div class="logo">
+     <a href="/"><img src="images/logo.png" alt="logo" width="125px"></a>
+     </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#product">Products</a></li>
+            {{#if user}}
+              <li><a href="/orders">Orders</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {{else}}
+              <li><a href="/login">Account</a></li>
+            {{/if}}  
+              <li><a href="/cart">Cart</a></li>
+            
+    </ul>
+  </div>
+</nav>
+  </header>
+<section>
+<body>
+    <!-- Cart items details -->
+    <div class="small-container cart-page">
+        <table>
+            <tr>
+                <th scope="col">No</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total Price</th>
+      <th></th>
+            </tr>
+            {{#each data}}
+            <tr>
+                <td>  
+                    <div class="cart-info">
+                        <img src="/product-images/{{this._id}}.jpg">
+                        <div>
+                            <p>{{this.name}}</p>
+                        </div>
+                    </div>
+                </td>
+ <td>
+                        <button class="cart-item-count mr-3" onclick="changeQuantity('{{this.cartId}}','{{this._id}}','{{../user}}',-1)" style="border-radius: 30px;" >-</button>
+                        <span id="{{this._id}}" >{{this.quantity}}</span> 
+                        <button class="cart-item-count ml-3" onclick="changeQuantity('{{this.cartId}}','{{this._id}}','{{../user}}',1)" style="border-radius: 30px;" >+</button>
+                    </td>
+      <td>{{this.price}}</td>
+          <td><span id="totalvalue">{{this.Totalproduct}}</span></td>
+      <td>
+         <a href="/admin/delete-product/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you want to delete {{this.name}}')" style="border-radius: 3px;" >Delete</a>
+        </td>
+            </tr>
+            {{/each}}
+        </table>
+        <hr>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Total</td>
+                    <td>Rs.<span id="total">{{totalvalue}}</span></td>
+                    <td><span id="total"><a href="/place-order" class="float-right btn btn-success  mt-3" style="width: 100%;border-radius: 3px;" >Place Order</a></span></td>
+                    
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    
+    <!-- javascript -->
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+</section>
+<script>
+    function changeQuantity(cartId, proId,userId,count) {
+      let quantity=parseInt(document.getElementById(proId).innerHTML)
+      count=parseInt(count)
+        $.ajax({
+            url: '/change-product-quantity',
+            method: 'POST',
+            data: {
+                user:userId,
+                cart: cartId,
+                product: proId,
+                count: count,
+                quantity:quantity
+            },
+            method:'post',
+            success: function (response) {
+              if(response.removeProduct){
+                alert("Product Removed from cart");
+                location.reload()
+              }else{
+                console.log(response)
+                document.getElementById(proId).innerHTML=quantity+count
+                document.getElementById('total').innerHTML = response.total;
+                //document.getElementById().innerHTML = response.totalproduct;
+
+              }
+                
+                // Optionally update the UI based on the response
+            },
+            error: function (error) {
+                console.error('Error:', error);
+                alert('Error occurred while changing quantity');
+            }
+        });
+    }
+</script>

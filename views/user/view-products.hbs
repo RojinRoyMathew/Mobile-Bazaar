@@ -1,0 +1,224 @@
+
+<body>
+    
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background: transparent">
+     <div class="logo">
+     <a href="/"><img src="images/logo.png" alt="logo" width="125px"></a>
+     </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li><a href="/">Home</a></li>
+        <li><a href="#product">Products</a></li>
+            {{#if user}}
+              <li><a href="/orders">Orders</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {{else}}
+              <li><a href="/login">Account</a></li>
+            {{/if}}  
+              <li><a href="/cart">Cart<span class="badge badge-success" id="cart-count" >{{CartCount}}</span></a></li>
+            
+    </ul>
+  </div>
+</nav>
+  </header>
+   <section>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                
+                <nav>
+                    
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Buy a New Phone</h1>
+                    <p>Enjoy with it always about great Experience.<br> Amazing User Experience</p>
+                    <a href="#product" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="images/phone-5.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feadtued Categories -->
+
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img src="images/phone-1.png">
+                </div>
+                <div class="col-3">
+                    <img src="images/phone -4.png">
+                </div>
+                <div class="col-3">
+                    <img src="images/phone-7.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <div class="small-container">
+        <h2 class="title">Latest Products</h2>
+        <div class="row">
+            {{#each latest}}
+            <div class="col-4 mx-3">
+                <a href="/productview/{{this._id}}"> <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height:15rem ;"></a>
+                <h4>{{this.name}}</h4>
+                <p>Rs.{{this.price}}</p>
+                
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <!-- Offer -->
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/iphone-feature-01.png" class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>Exclusively Available on RedStore</p>
+                    <h1>Iphone 15 Pro Max</h1>
+                    <small>The Iphone 15 Pro Max fearures a more (than Iphone 14 Pro Max) AMOLED color display.<br></small>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>User-Friendly Interface: <tr>From the moment you open the app or site,The intuitive design ensures that you can navigate effortlessly between categories and products.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="images/user-1.png">
+                    <h3>Sean Parker</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Fast and Efficient: The mobile site is incredibly responsive,User-Friendly loading pages quickly and ensuring that your shopping experience is smooth and hassle-free.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="images/user-2.png">
+                    <h3>Mike Smith</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Wide Product Selection: From the latest gadgets to stylish apparel. The detailed product descriptions and high-quality images make it easy to make informed decisions.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="images/user-3.png">
+                    <h3>Mabel Joe</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- All Products -->
+
+    <div class="small-container">
+        <div class="row row-2">
+            <h2 id="product">All Products</h2>
+        </div>
+        <div class="row">
+          {{#each data}}
+            <div class="col-4">
+                <a href="/productview/{{this._id}}"> <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height:15rem ;"></a>
+                <h4>{{this.name}}</h4>
+                <p>Rs.{{this.price}}</p>
+                
+            </div>
+          {{/each}}
+        </div>
+    </div>
+   </section> 
+   <footer>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and ios mobile phone.</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png">
+                        <img src="images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Mobile Accessible to the Many.
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2024 - Rojin Roy Mathew</p>
+        </div>
+    </div>
+</footer>
+    <!-- javascript -->
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+
+</body>
+
+</html>

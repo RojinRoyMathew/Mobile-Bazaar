@@ -1,0 +1,141 @@
+
+<body>
+    
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                
+                <nav>
+                    
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Buy a New Phone</h1>
+                    <p>Enjoy with it always about great Experience.<br> Amazing User Experience</p>
+                    <a href="/product" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="images/phone-5.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feadtued Categories -->
+
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img src="images/phone-1.png">
+                </div>
+                <div class="col-3">
+                    <img src="images/phone -4.png">
+                </div>
+                <div class="col-3">
+                    <img src="images/phone-7.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <div class="small-container">
+        <h2 class="title">Latest Products</h2>
+        <div class="row">
+            {{#each data}}
+            <div class="col-4 mx-3">
+                <a href="/productview/{{this._id}}"> <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height:15rem ;"></a>
+                <h4>{{this.name}}</h4>
+                <p>Rs.{{this.price}}</p>
+                
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <!-- Offer -->
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/iphone-feature-01.png" class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>Exclusively Available on RedStore</p>
+                    <h1>Iphone 15 Pro Max</h1>
+                    <small>The Iphone 15 Pro Max fearures a more (than Iphone 14 Pro Max) AMOLED color display.<br></small>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>User-Friendly Interface: <tr>From the moment you open the app or site,The intuitive design ensures that you can navigate effortlessly between categories and products.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="images/user-1.png">
+                    <h3>Sean Parker</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Fast and Efficient: The mobile site is incredibly responsive, loading pages quickly and ensuring that your shopping experience is smooth and hassle-free.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="images/user-2.png">
+                    <h3>Mike Smith</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Wide Product Selection: From the latest gadgets to stylish apparel. The detailed product descriptions and high-quality images make it easy to make informed decisions.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="images/user-3.png">
+                    <h3>Mabel Joe</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <!-- javascript -->
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+
+</body>
+
+</html>

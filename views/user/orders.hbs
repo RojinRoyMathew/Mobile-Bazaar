@@ -1,0 +1,79 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background: transparent">
+     <div class="logo">
+     <a href="/"><img src="images/logo.png" alt="logo" width="125px"></a>
+     </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#product">Products</a></li>
+            {{#if user}}
+              <li><a href="/orders">Orders</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {{else}}
+              <li><a href="/login">Account</a></li>
+            {{/if}}  
+              <li><a href="/cart">Cart</a></li>
+            
+    </ul>
+  </div>
+</nav>
+  </header>
+  <hr>
+<section>
+    <div class="container">
+<table class="" id="productsTable">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Address</th>
+      <th scope="col">Pincode</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+      <th scope="col">View Product</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each order}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      {{#each deliveryDetails}}
+      <td>{{this.mobile}}</td>
+      <td>{{this.address}}</td>
+      <td>{{this.pincode}}</td>
+
+      {{/each}}
+      <td>{{PaymentMethod}}</td>
+      <td>{{totalAmount}}</td>
+      <td>{{status}}</td>
+      <td>{{date}}</td>
+      <td><a href="/viewproduct/{{this._id}}" class="btn btn-primary" style="border-radius: 3px;">Click Here</a></tr>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>
+<hr>
+<script>
+  $(function (){
+   $('#productsTable').DataTable();
+  })
+ 
+</script>
+<style>
+    table.dataTable td,th {
+            border: 1px solid #ddd; /* Border style */
+            padding: 8px; /* Padding for cell content */
+            text-align: center; /* Center-align cell content */
+        }
+    
+
+</style>

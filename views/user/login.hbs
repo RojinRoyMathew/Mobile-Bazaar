@@ -1,0 +1,101 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background: transparent">
+     <div class="logo">
+     <a href="/"><img src="images/logo.png" alt="logo" width="125px"></a>
+     </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#product">Products</a></li>
+            {{#if user}}
+              <li><a href="/orders">Orders</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {{else}}
+              <li><a href="/login">Account</a></li>
+            {{/if}}  
+              <li><a href="/cart">Cart</a></li>
+            
+    </ul>
+  </div>
+</nav>
+  </header>
+<section>
+    <div class="container">
+    </div>
+
+    <!-- Account Page -->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/phone-3.png" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+                        
+     <form action="/login" id="LoginForm" method="post">
+        {{#if loginErr}}
+         <p class="error" style="color: tomato;">{{loginErr}}</p>
+        {{/if}}
+            <div class="form-group">
+                <input type="email" class="form-control" name="Email" placeholder="Enter email">
+            </div>
+             <div class="form-group">
+                <input type="password" class="form-control" name="Password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary float-right" style="border-radius: 3px;" >Login</button>
+        </form>
+
+    <form action="/signup" method="post" id="RegForm">
+            <div class="form-group">
+            <input type="text" class="form-control" name="Name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+            <input type="email" class="form-control" name="Email" placeholder="Enter email">
+            </div>
+             <div class="form-group">
+            <input type="password" class="form-control" name="Password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary float-right" style="border-radius: 3px;">Sign up</button>
+        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- javascript -->
+
+
+    <!-- Toggle Form -->
+    <script>
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var Indicator = document.getElementById("Indicator");
+        function register() {
+            RegForm.style.transform = "translatex(0px)";
+            LoginForm.style.transform = "translatex(0px)";
+            Indicator.style.transform = "translateX(100px)";
+
+        }
+        function login() {
+            RegForm.style.transform = "translatex(300px)";
+            LoginForm.style.transform = "translatex(300px)";
+            Indicator.style.transform = "translate(0px)";
+
+        }
+    </script>
+
+</body>
+
+</html>
